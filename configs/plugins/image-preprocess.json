@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "name": "image.preprocess",
+  "executable": "image-preprocess",
+  "version": "0.1.0",
+  "description": "Placeholder remote sensing image preprocessing plugin",
+  "commands": ["manifest", "validate", "run"],
+  "scenarios": ["image_preprocess"],
+  "capabilities": {
+    "async": true,
+    "dry_run": true,
+    "cancel": "process_signal",
+    "requires_gmat": false,
+    "batch": true
+  }
+}
