@@ -1,0 +1,11 @@
+build/
+build-*/
+.meson-private/
+*.o
+*.a
+compile_commands.json
+
+# Meson subprojects — track wraps only
+/subprojects/*
+!/subprojects/*.wrap
+/subprojects/packagecache/
