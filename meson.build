@@ -8,4 +8,4 @@ executable('image-preprocess', 'src/image-preprocess/main.cpp',
   dependencies: [satellite_common_dep], install: true)
 
 install_data('configs/plugins/image-preprocess.json',
-  install_dir: get_option('datadir') / 'image-preprocess/plugins')
+  install_dir: get_option('datadir') / 'satellite/plugins')
