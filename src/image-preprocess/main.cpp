@@ -35,13 +35,34 @@ int main(int argc, char** argv) {
 
     if (cmd == "manifest") {
         satellite::write_json_stdout({
-            {"schema_version", "1.0"},
+            {"schema_version", "1.1"},
             {"name", "image.preprocess"},
             {"executable", "image-preprocess"},
             {"version", "0.1.0"},
+            {"description",
+             "Placeholder remote sensing image preprocessing plugin"},
+            {"domain", "image"},
+            {"safety_class", "planning_only"},
             {"commands",
              nlohmann::json::array({"manifest", "validate", "run"})},
-            {"capabilities", {{"requires_gmat", false}, {"dry_run", true}}},
+            {"scenarios", nlohmann::json::array({"image_preprocess"})},
+            {"capabilities",
+             {{"kind", "actuate"},
+              {"side_effect_class", "reversible"},
+              {"relocatable", true},
+              {"deterministic", false},
+              {"idempotent", false},
+              {"retryable", true},
+              {"consumes", nlohmann::json::array({"DataProduct"})},
+              {"produces", nlohmann::json::array({"DataProduct"})},
+              {"hardware_tag", nullptr},
+              {"timeout_sec", 300},
+              {"compensation", nullptr},
+              {"async", true},
+              {"dry_run", true},
+              {"cancel", "process_signal"},
+              {"requires_gmat", false},
+              {"batch", true}}},
         });
         return satellite::EXIT_OK;
     }
